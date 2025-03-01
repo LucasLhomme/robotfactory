@@ -9,7 +9,7 @@
 #include "op.h"
 
 const op_t op_tab[] = {
-    {"live" ,1 ,{T_DIR} ,1 ,10 ,"alive"},
+    {"live", 1, {T_DIR}, 1, 10, "alive"},
     {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load"},
     {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store"},
     {"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition"},
