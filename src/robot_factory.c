@@ -10,6 +10,9 @@
 
 int main(int argc, char **argv)
 {
-    my_printf("hello world\n");
-    return 84;
+    if (error_handling(argc, argv) == 84)
+        return 84;
+    if (create_champions(argv[1]) == NULL)
+        return 84;
+    return 0;
 }

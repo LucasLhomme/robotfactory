@@ -9,7 +9,9 @@ NAME = asm
 DEBUG = -g
 CFLAGS += -g -Wall -Wextra -W -Iinclude -Isrc/lib/include
 
-SRC =	./src/robot_factory.c
+SRC =	./src/robot_factory.c\
+		./src/create_champions.c\
+		./src/error_handling.c
 
 OBJ  	=	 $(SRC:.c=.o)
 
@@ -30,4 +32,3 @@ fclean: clean
 re:
 		$(MAKE) fclean
 		$(MAKE) all
-

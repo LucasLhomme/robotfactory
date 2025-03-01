@@ -45,4 +45,5 @@ int bubble_sort(char **tab);
 int my_strnmajcmp(char *str1, char *str2);
 void my_show_word_in_array(char **tab);
 char *my_getenv(char **env, char *value);
+char *extract_str(char *str, char separator);
 #endif /*lib.h*/

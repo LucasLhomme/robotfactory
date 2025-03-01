@@ -36,7 +36,8 @@ LIB =	./my_compute_power_rec.c\
 	./my_strnmajcmp.c\
 	./my_strcat.c\
 	./my_show_word_in_array.c\
-	./my_getenv.c
+	./my_getenv.c\
+	./extract_str.c
 
 
 OBJ_LIB  	=	 $(LIB:.c=.o)
