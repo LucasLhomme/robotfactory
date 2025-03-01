@@ -11,7 +11,8 @@ CFLAGS += -g -Wall -Wextra -W -Iinclude -Isrc/lib/include
 
 SRC =	./src/robot_factory.c\
 		./src/create_champions.c\
-		./src/error_handling.c
+		./src/error_handling.c\
+		./src/champion_parsing.c
 
 OBJ  	=	 $(SRC:.c=.o)
 

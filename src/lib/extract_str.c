@@ -14,7 +14,7 @@ char *extract_str(char *str, char separator)
     size_t length;
     char *result = NULL;
 
-    if (!str) 
+    if (!str)
         return NULL;
     for (; *str && *str != separator; str++);
     if (!*str)

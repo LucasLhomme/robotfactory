@@ -37,4 +37,8 @@ champion_t *parse_file(char *filename);
 int error_handling(int argc, char **argv);
 int error_champion_handling(FILE *file, champion_t *champion);
 champion_t *create_champions(char *filename);
+void add_command(node_t **head, char *command, char *value, int id);
+champion_t *get_comment(FILE *file, champion_t *champion);
+champion_t *get_name(FILE *file, champion_t *champion);
+void parse_command(champion_t *champion, char *line);
 #endif /* !MY_H_ */
