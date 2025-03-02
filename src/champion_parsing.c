@@ -21,32 +21,13 @@ void add_command(node_t **head, char *command, char *value, int id)
     *head = new_node;
 }
 
-champion_t *get_comment(FILE *file, champion_t *champion)
+char *get_comment(FILE *file)
 {
     size_t len = 0;
     ssize_t read;
     char *line = NULL;
     char **tab = NULL;
-
-    read = getline(&line, &len, file);
-    read = getline(&line, &len, file);
-    if (read == -1)
-        return NULL;
-    tab = my_str_to_word_array(line);
-    if (!tab)
-        return NULL;
-    if (my_strcmp(tab[0], "name") != 0)
-        return NULL;
-    champion->name = extract_str(line, '"');
-    return champion;
-}
-
-champion_t *get_name(FILE *file, champion_t *champion)
-{
-    size_t len = 0;
-    ssize_t read;
-    char *line = NULL;
-    char **tab = NULL;
+    char *comment = NULL;
 
     read = getline(&line, &len, file);
     if (read == -1)
@@ -54,22 +35,48 @@ champion_t *get_name(FILE *file, champion_t *champion)
     tab = my_str_to_word_array(line);
     if (!tab)
         return NULL;
-    if (my_strcmp(tab[0], "name") != 0)
+    if (my_strcmp(tab[0], "comment") != 0)
         return NULL;
-    champion->name = extract_str(line, '"');
-    return champion;
+    comment = extract_str(line, '"');
+    return comment;
 }
 
-void parse_command(champion_t *champion, char *line)
+char *get_name(FILE *file)
 {
+    size_t len = 0;
+    ssize_t read;
+    char *line = NULL;
+    char **tab = NULL;
+    char *name = NULL;
+
+    read = getline(&line, &len, file);
+    if (read == -1)
+        return NULL;
+    tab = my_str_to_word_array(line);
+    if (!tab[0])
+        return NULL;
+    if (my_strcmp(tab[0], "name") != 0)
+        return NULL;
+    name = extract_str(line, '"');
+    return name;
+}
+
+void get_command_list(FILE *file, champion_t *champion)
+{
+    size_t len = 0;
+    char *line = NULL;
+    ssize_t read = getline(&line, &len, file);
+    static int id = 0;
     char *cmd = NULL;
     char *val = NULL;
-    static int id = 0;
 
-    cmd = NULL;
-    val = NULL;
-    add_command(&champion->next, cmd, val, id);
-    id++;
-    free(cmd);
-    free(val);
+    if (!champion || !file)
+        return;
+    for (; read != -1; read = getline(&line, &len, file)) {
+        if (line[0] != '.' && my_strlen(line) > 1) {
+            cmd = my_strtok(line, " ");
+            val = my_strtok(NULL, "\n");
+            add_command(&champion->next, cmd, val, id++);
+        }
+    }
 }

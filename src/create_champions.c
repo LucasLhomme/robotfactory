@@ -9,10 +9,9 @@
 #include "lib.h"
 #include <string.h>
 
-void free_champion(FILE *file, char *line, char **tab)
+void free_champion(FILE *file, char **tab)
 {
     fclose(file);
-    free(line);
     free(tab);
 }
 
@@ -27,28 +26,24 @@ champion_t *parse_file(char *filename)
 {
     FILE *file = fopen(filename, "r");
     champion_t *champion = malloc(sizeof(champion_t));
-    char *line = NULL;
-    size_t len = 0;
-    ssize_t read;
     char **tab = NULL;
 
     if (error_champion_handling(file, champion) == 84)
         return NULL;
-    if (!get_comment(file, champion) || !get_name(file, champion))
+    champion->name = get_name(file);
+    champion->comment = get_comment(file);
+    if (!champion->name || !champion->comment)
         return NULL;
-    read = getline(&line, &len, file);
-    while ((getline(&line, &len, file)) != -1) {
-        parse_command(champion, line);
-        read = getline(&line, &len, file);
-    }
-    free_champion(file, line, tab);
+    get_command_list(file, champion);
+    free_champion(file, tab);
     return champion;
 }
 
 champion_t *create_champions(char *filename)
 {
-    champion_t *champion = parse_file(filename);
+    champion_t *champion = malloc(sizeof(champion_t) * 1);
 
+    champion = parse_file(filename);
     if (champion == NULL)
         return NULL;
     return champion;
