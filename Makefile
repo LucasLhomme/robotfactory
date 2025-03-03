@@ -7,7 +7,7 @@
 
 NAME = asm
 DEBUG = -g
-CFLAGS += -g -Wall -Wextra -W -Iinclude -Isrc/lib/include
+CFLAGS += -g -Wall -Wextra -W -Iinclude -Ilib/include
 
 SRC =	./src/robot_factory.c\
 		./src/create_champions.c\
@@ -20,11 +20,11 @@ all: 	$(NAME)
 		$(MAKE) clean
 
 $(NAME): $(OBJ)
-		 $(MAKE) -C src/lib all
+		 $(MAKE) -C lib all
 		 gcc -o $(NAME) $(CFLAGS) $(OBJ) libmy.a
 
 clean || clear:
-		$(MAKE) -C src/lib clean
+		$(MAKE) -C lib clean
 		rm -f $(OBJ)
 
 fclean: clean
