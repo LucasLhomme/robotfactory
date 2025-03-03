@@ -5,6 +5,8 @@
 ** main file
 */
 
+#include <unistd.h>
+#include <stdlib.h>
 #include "my.h"
 #include "lib.h"
 
@@ -15,15 +17,18 @@ void flag_h(void)
           " to be converted into file_name.cor,"
           " an executable in the Virtual Machine.\n");
 }
+
 int main(int argc, char **argv)
 {
+    champion_t *champion = malloc(sizeof(champion_t) * 1);
+
     if (argc <= 1)
         my_printf("Usage: ./asm file_name[.s] ....\n");
     else if (my_strcmp(argv[1], "-h") == 0)
         flag_h();
     if (error_handling(argc, argv) == 84)
         return 84;
-    if (create_champions(argv[1]) == NULL)
+    if (create_champions(argv[1], champion) == NULL)
         return 84;
     return 0;
 }
