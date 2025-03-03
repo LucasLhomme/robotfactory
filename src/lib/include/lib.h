@@ -11,6 +11,7 @@
 #include <string.h>
 #include <dirent.h>
 #include <time.h>
+#include <unistd.h>
 
 #ifndef MY_H
     #define MY_H
@@ -45,4 +46,8 @@ int bubble_sort(char **tab);
 int my_strnmajcmp(char *str1, char *str2);
 void my_show_word_in_array(char **tab);
 char *my_getenv(char **env, char *value);
+char *extract_str(char *str, char separator);
+char *extract_str_advanced(char *str, char separator1, char separator2);
+char *my_strchr(const char *str, char c);
+char *my_strtok(char *str, const char *delim);
 #endif /*lib.h*/
