@@ -19,9 +19,6 @@ int create_cor(champion_t *champ)
         return 84;
     my_strcpy(namefile, champ->name);
     my_strcat(namefile, ".cor");
-    printf("name of the file: %s\n", namefile);
-    printf("champ name: %s\n", champ->name);
-    printf("champ comment: %s\n", champ->comment);
     new_file = fopen(namefile, "w+");
     if (new_file == NULL)
         return 84;
