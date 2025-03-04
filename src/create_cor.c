@@ -10,7 +10,8 @@
 #include "my.h"
 #include "lib.h"
 
-int create_cor(champion_t *champ) {
+int create_cor(champion_t *champ)
+{
     char namefile[256];
     FILE *new_file = NULL;
 

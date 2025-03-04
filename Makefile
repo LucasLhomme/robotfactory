@@ -1,8 +1,9 @@
-## EPITECH PROJECT, 2024
-## Makefile Root
+##
+## EPITECH PROJECT, 2025
+## B-CPE-200-LIL-2-1-robotfactory-lucas.lhomme
 ## File description:
-## MakeFile in the root directory
-
+## Makefile
+##
 # Colors
 RED=\033[0;31m
 GREEN=\033[0;32m
@@ -14,7 +15,7 @@ NC=\033[0m # No Color
 # Variables
 NAME = asm
 CFLAGS = -g -Wall -Wextra -W -Iinclude -Ilib/include -fdiagnostics-color=always
-SRC =	./src/robot_factory.c \
+SRC =	./src/main.c \
         ./src/create_champions.c \
         ./src/error_handling.c \
         ./src/champion_parsing.c \
@@ -34,7 +35,8 @@ $(NAME): $(OBJ)
 	if [ $$ERRORS -eq 0 ]; then \
 		echo "$(GREEN)Build complete!$(NC)"; \
 	else \
-		echo "$(RED)Build failed with $$ERRORS errors$(MAGENTA) and $$WARNINGS warnings!$(NC)"; \
+		echo "$(RED)Build failed with $$ERRORS errors\
+		$(MAGENTA) and $$WARNINGS warnings!$(NC)"; \
 	fi
 
 # Compilation of object files
