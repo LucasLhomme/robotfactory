@@ -7,15 +7,8 @@
 
 #include "lib.h"
 
-char *my_strcat(char *dest, char const *src)
+char *my_strcat(char *dest, const char *src)
 {
-    int lendest = my_strlen(dest);
-    int srclen = my_strlen(src);
-    int totallen = lendest + srclen;
-
-    for (int i = 0; i != srclen; i++) {
-        dest[i + lendest] = src[i];
-    }
-    dest[totallen + 1] = '\0';
+    my_strcpy(dest + my_strlen(dest), src);
     return dest;
 }
