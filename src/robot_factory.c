@@ -26,12 +26,9 @@ int main(int argc, char **argv)
         my_printf("Usage: ./asm file_name[.s] ....\n");
     else if (my_strcmp(argv[1], "-h") == 0)
         flag_h();
-    if (error_handling(argc, argv) == 84){
-        printf("error\n");
-        return 84;
-    }
     champion = create_champions(argv[1]);
     if (!champion)
         return 84;
+    create_cor(champion);
     return 0;
 }

@@ -41,4 +41,5 @@ void add_command(node_t **head, char *command, char *value, int id);
 char *get_comment(FILE *file);
 char *get_name(FILE *file);
 void get_command_list(FILE *file, champion_t *champion);
+int create_cor(champion_t *champ);
 #endif /* !MY_H_ */
