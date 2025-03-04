@@ -25,5 +25,25 @@ const command_t command[] = {
     {"lldi", command_lldi},
     {"lfork", command_lfork},
     {"aff", command_aff},
-    {'\0', NULL},
+    {NULL, NULL},
 };
+
+int find_command(champion_t *champion, node_t *cmd)
+{
+    for (int i = 0; command[i].command != NULL; i++) {
+        if (command[i].command == cmd->command)
+            return command[i].command_name(cmd->command, cmd->value);
+    }
+    return 84;
+}
+
+int command_checker(champion_t *champion)
+{
+    node_t *cmd = champion->next;
+
+    for (node_t *cmd = champion->next; cmd; cmd = cmd->next) {
+        if (find_command(champion, cmd) == 84)
+            return 84;
+    }
+    return 0;
+}
