@@ -14,8 +14,8 @@ void add_command(node_t **head, char *command, char *value, int id)
 
     if (!new_node)
         return;
-    new_node->command = strdup(command);
-    new_node->value = value ? strdup(value) : NULL;
+    new_node->command = my_strdup(command);
+    new_node->value = value ? my_strdup(value) : NULL;
     new_node->id = id;
     new_node->next = *head;
     *head = new_node;
