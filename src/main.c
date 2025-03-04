@@ -13,9 +13,9 @@
 void flag_h(void)
 {
     my_printf("USAGE ./asm file_name[.s]\nDESCRIPTION\n"
-          "file_name file in assembly language"
-          " to be converted into file_name.cor,"
-          " an executable in the Virtual Machine.\n");
+        "file_name file in assembly language"
+        " to be converted into file_name.cor,"
+        " an executable in the Virtual Machine.\n");
 }
 
 int main(int argc, char **argv)
