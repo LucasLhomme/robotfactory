@@ -11,10 +11,12 @@
 
 int error_handling(int argc, char **argv)
 {
+    char *str = my_revstr(argv[1]);
+
     if (argc != 2)
         return 84;
-    if (my_strncmp(my_revstr(argv[1]), "s.", 2) != 0) {
-        
+    if (my_strncmp(str, "s.", 2) != 0) {
+        printf("%s\n", str);
         return 84;
     }
     return 0;

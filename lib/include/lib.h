@@ -39,15 +39,16 @@ char *my_strcpy(char *dest, char const *src);
 char *my_strdup(char const *src);
 int my_strlen(char const *str);
 char *my_strncat(char *dest, char const *src, int n);
-int my_strncmp(char *const str1, char *const str2, int n);
+int my_strncmp(char const *s1, char const *s2, size_t n);
 char *my_strncpy(char *dest, char const *src, int n);
 void my_swap(int *a, int *b);
 int bubble_sort(char **tab);
-int my_strnmajcmp(char *str1, char *str2);
+int my_strnmajcmp(char *str1, char *str2, int n);
 void my_show_word_in_array(char **tab);
 char *my_getenv(char **env, char *value);
 char *extract_str(char *str, char separator);
 char *extract_str_advanced(char *str, char separator1, char separator2);
 char *my_strchr(const char *str, char c);
 char *my_strtok(char *str, const char *delim);
+int my_strmajcmp(char *str1, char *str2);
 #endif /*lib.h*/

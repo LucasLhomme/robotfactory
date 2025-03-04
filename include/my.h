@@ -9,6 +9,11 @@
 #ifndef MY_H_
     #define MY_H_
 
+typedef struct command_s {
+    char *command;
+    int (*command_name)(char *command, char *argument);
+} command_t;
+
 typedef struct node_s {
     char *command;
     char *value;
@@ -42,4 +47,20 @@ char *get_comment(FILE *file);
 char *get_name(FILE *file);
 void get_command_list(FILE *file, champion_t *champion);
 int create_cor(champion_t *champ);
+int command_live(char *command, char *argument);
+int command_ld(char *command, char *argument);
+int command_st(char *command, char *argument);
+int command_add(char *command, char *argument);
+int command_sub(char *command, char *argument);
+int command_and(char *command, char *argument);
+int command_or(char *command, char *argument);
+int command_xor(char *command, char *argument);
+int command_zjmp(char *command, char *argument);
+int command_ldi(char *command, char *argument);
+int command_sti(char *command, char *argument);
+int command_fork(char *command, char *argument);
+int command_lld(char *command, char *argument);
+int command_lldi(char *command, char *argument);
+int command_lfork(char *command, char *argument);
+int command_aff(char *command, char *argument);
 #endif /* !MY_H_ */
