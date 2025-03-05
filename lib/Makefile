@@ -23,7 +23,6 @@ LIB =	./my_compute_power_rec.c\
 	./my_put_nbr.c\
 	./my_putchar.c\
 	./my_putstr.c\
-	./my_revstr.c\
 	./my_strdup.c\
 	./my_strncmp.c\
 	./my_strcpy.c\
@@ -51,7 +50,8 @@ LIB =	./my_compute_power_rec.c\
 	./extract_str_advanced.c\
 	./my_strchr.c\
 	./my_strtok.c\
-	./my_str_to_word_array_advanced.c
+	./my_str_to_word_array_advanced.c\
+	./my_str_tolower.c\
 
 OBJ_LIB  	=	 $(LIB:.c=.o)
 

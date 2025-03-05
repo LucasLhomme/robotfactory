@@ -11,14 +11,11 @@ int create_cor(champion_t *champ)
 {
     char namefile[256];
     FILE *new_file = NULL;
-    int instruction_code = 0x0b;
-    int param1_type = 1;
-    int param2_type = 2;
-    int param3_type = 3;
 
     if (champ == NULL || champ->name == NULL || champ->comment == NULL)
         return 84;
     my_strcpy(namefile, champ->name);
+    my_str_tolower(namefile);
     my_strcat(namefile, ".cor");
     new_file = fopen(namefile, "w+");
     if (new_file == NULL)
