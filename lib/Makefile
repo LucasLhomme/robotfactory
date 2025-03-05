@@ -40,7 +40,8 @@ LIB =	./my_compute_power_rec.c\
 	./extract_str.c\
 	./extract_str_advanced.c\
 	./my_strchr.c\
-	./my_strtok.c
+	./my_strtok.c\
+	./my_str_to_word_array_advanced.c
 
 
 OBJ_LIB  	=	 $(LIB:.c=.o)
