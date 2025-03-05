@@ -18,38 +18,40 @@ NC=\033[0m # No Color
 NAME = libmy.a
 
 LIB =	./my_compute_power_rec.c\
- ./my_getnbr.c\
- ./my_isneg.c\
- ./my_put_nbr.c\
- ./my_putchar.c\
- ./my_putstr.c\
- ./my_revstr.c\
- ./my_strdup.c\
- ./my_strncmp.c\
- ./my_strcpy.c\
- ./my_strlen.c\
- ./my_strncpy.c\
- ./my_swap.c\
- ./my_sort_params.c\
- ./my_str_to_word_array.c\
- ./flag_c.c\
- ./flag_d.c\
- ./flag_i.c\
- ./flag_o.c\
- ./flag_percent.c\
- ./flag_s.c\
- ./flag_x.c\
- ./flag_x2.c\
- ./my_printf.c\
- ./my_strcmp.c\
- ./my_strnmajcmp.c\
- ./my_strcat.c\
- ./my_show_word_in_array.c\
- ./my_getenv.c\
- ./extract_str.c\
- ./extract_str_advanced.c\
- ./my_strchr.c\
- ./my_strtok.c
+	./my_getnbr.c\
+	./my_isneg.c\
+	./my_put_nbr.c\
+	./my_putchar.c\
+	./my_putstr.c\
+	./my_revstr.c\
+	./my_strdup.c\
+	./my_strncmp.c\
+	./my_strcpy.c\
+	./my_strlen.c\
+	./my_strncpy.c\
+	./my_swap.c\
+	./my_sort_params.c\
+	./my_revstr.c\
+	./my_str_to_word_array.c\
+	./flag_c.c\
+	./flag_d.c\
+	./flag_i.c\
+	./flag_o.c\
+	./flag_percent.c\
+	./flag_s.c\
+	./flag_x.c\
+	./flag_x2.c\
+	./my_printf.c\
+	./my_strcmp.c\
+	./my_strnmajcmp.c\
+	./my_strcat.c\
+	./my_show_word_in_array.c\
+	./my_getenv.c\
+	./extract_str.c\
+	./extract_str_advanced.c\
+	./my_strchr.c\
+	./my_strtok.c\
+	./my_str_to_word_array_advanced.c
 
 OBJ_LIB  	=	 $(LIB:.c=.o)
 

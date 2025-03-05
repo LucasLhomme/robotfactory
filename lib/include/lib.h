@@ -51,4 +51,5 @@ char *extract_str_advanced(char *str, char separator1, char separator2);
 char *my_strchr(const char *str, char c);
 char *my_strtok(char *str, const char *delim);
 int my_strmajcmp(char *str1, char *str2);
+char **my_str_to_word_array_advanced(char *str, char *extra_chars);
 #endif /*lib.h*/
