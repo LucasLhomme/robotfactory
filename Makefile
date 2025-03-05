@@ -19,7 +19,10 @@ SRC =	./src/main.c \
         ./src/create_champions.c \
         ./src/error_handling.c \
         ./src/champion_parsing.c \
-        ./src/create_cor.c
+        ./src/create_cor.c \
+        ./src/write_coding_byte.c \
+        ./src/coding_byte.c \
+
 OBJ = $(SRC:.c=.o)
 LIBMY = libmy.a
 
