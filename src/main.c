@@ -31,5 +31,6 @@ int main(int argc, char **argv)
     champion = create_champions(argv[1]);
     if (!champion)
         return 84;
+    create_cor(champion);
     return 0;
 }

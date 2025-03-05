@@ -30,7 +30,7 @@ champion_t *parse_file(char *filename)
 
     if (error_champion_handling(file, champion) == 84)
         return NULL;
-    champion->name = get_name(file);
+    champion->name = my_get_name(file);
     champion->comment = get_comment(file);
     if (!champion->name || !champion->comment)
         return NULL;

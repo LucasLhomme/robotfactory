@@ -16,9 +16,9 @@ int error_handling(int argc, char **argv)
     if (argc != 2)
         return 84;
     if (my_strncmp(str, "s.", 2) != 0) {
-        printf("%s\n", str);
         return 84;
     }
+    str = my_revstr(argv[1]);
     return 0;
 }
 
