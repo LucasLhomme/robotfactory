@@ -27,7 +27,7 @@ static int my_isnonalphanum_advanced(const char c, char *extra_chars)
     return !my_isalphanum_advanced(c, extra_chars);
 }
 
-char *allocate_word(char *str, int start, int end)
+char *allocate_word_advanced(char *str, int start, int end)
 {
     int length = end - start;
     char *word = malloc((length + 1) * sizeof(char));
@@ -40,7 +40,7 @@ char *allocate_word(char *str, int start, int end)
     return word;
 }
 
-int count_word(char *str)
+int count_word_advanced(char *str)
 {
     int word = 0;
     int word_in = 0;
@@ -62,22 +62,22 @@ int count_word(char *str)
     return word;
 }
 
-int while_kskip(char *str, int k, char *extra_chars)
+int while_kskip_advanced(char *str, int k, char *extra_chars)
 {
     while (my_isalphanum_advanced(str[k], extra_chars))
         k++;
     return k;
 }
 
-char *word_in_array(char *str, int k, char *extra_chars)
+char *word_in_array_advanced(char *str, int k, char *extra_chars)
 {
     int start = k;
     int end = 0;
     char *new_str = NULL;
 
-    k = while_kskip(str, k, extra_chars);
+    k = while_kskip_advanced(str, k, extra_chars);
     end = k;
-    new_str = allocate_word(str, start, end);
+    new_str = allocate_word_advanced(str, start, end);
     if (new_str == NULL)
         return NULL;
     k--;
@@ -86,7 +86,7 @@ char *word_in_array(char *str, int k, char *extra_chars)
 
 char **my_str_to_word_array_advanced(char *str, char *extra_chars)
 {
-    int words = count_word(str);
+    int words = count_word_advanced(str);
     char **tab = NULL;
     int i = 0;
 
@@ -98,7 +98,7 @@ char **my_str_to_word_array_advanced(char *str, char *extra_chars)
     for (int k = 0; str[k] != '\0'; k++) {
         if (my_isalphanum_advanced(str[k], extra_chars) && (k == 0 ||
             my_isnonalphanum_advanced(str[k - 1], extra_chars))) {
-            tab[i] = word_in_array(str, k, extra_chars);
+            tab[i] = word_in_array_advanced(str, k, extra_chars);
             i++;
         }
     }

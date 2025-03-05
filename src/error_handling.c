@@ -15,9 +15,8 @@ int error_handling(int argc, char **argv)
 
     if (argc != 2)
         return 84;
-    if (my_strncmp(str, "s.", 2) != 0) {
+    if (my_strncmp(str, "s.", 2) != 0)
         return 84;
-    }
     str = my_revstr(argv[1]);
     return 0;
 }
@@ -31,5 +30,17 @@ int error_champion_handling(FILE *file, champion_t *champion)
         free(champion);
         return 84;
     }
+    return 0;
+}
+
+int error_name_handling(char **tab)
+{
+    int i = 0;
+
+    if (tab[2])
+        return 84;
+    for (;tab[1][i] != '\0'; i++);
+    if (tab[1][i - 1] != '"' || tab[1][0] != '"')
+        return 84;
     return 0;
 }

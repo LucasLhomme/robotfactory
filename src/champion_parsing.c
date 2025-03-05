@@ -32,10 +32,10 @@ char *get_comment(FILE *file)
     read = getline(&line, &len, file);
     if (read == -1)
         return NULL;
-    tab = my_str_to_word_array(line);
+    tab = my_str_to_word_array_advanced(line, ".");
     if (!tab)
         return NULL;
-    if (my_strcmp(tab[0], "comment") != 0)
+    if (my_strcmp(tab[0], ".comment") != 0)
         return NULL;
     comment = extract_str(line, '"');
     return comment;
@@ -52,10 +52,12 @@ char *my_get_name(FILE *file)
     read = getline(&line, &len, file);
     if (read == -1)
         return NULL;
-    tab = my_str_to_word_array(line);
+    tab = my_str_to_word_array_advanced(line, ".\"");
     if (!tab[0])
         return NULL;
-    if (my_strcmp(tab[0], "name") != 0)
+    if (my_strcmp(tab[0], ".name") != 0)
+        return NULL;
+    if (error_name_handling(tab) == 84)
         return NULL;
     name = extract_str(line, '"');
     return name;

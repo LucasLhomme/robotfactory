@@ -70,4 +70,5 @@ int command_lld(char *command, char *argument);
 int command_lldi(char *command, char *argument);
 int command_lfork(char *command, char *argument);
 int command_aff(char *command, char *argument);
+int error_name_handling(char **tab);
 #endif /* !MY_H_ */
