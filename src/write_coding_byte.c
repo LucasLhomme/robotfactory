@@ -50,6 +50,9 @@ int write_parameters(FILE *new_file, char *param1,
 {
     int dummy_value = 0x12345678;
 
+    (void)param1;
+    (void)param2;
+    (void)param3;
     fwrite(&dummy_value, sizeof(int), 1, new_file);
     return 0;
 }
