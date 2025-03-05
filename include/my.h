@@ -47,6 +47,13 @@ char *get_comment(FILE *file);
 char *my_get_name(FILE *file);
 void get_command_list(FILE *file, champion_t *champion);
 int create_cor(champion_t *champ);
+int write_header(FILE *new_file, champion_t *champ);
+int write_instruction_code(FILE *new_file, int instruction_code);
+int write_coding_byte(FILE *new_file, int param1_type,
+    int param2_type, int param3_type);
+int write_parameters(FILE *new_file, char *param1,
+    char *param2, char *param3);
+uint8_t create_coding_byte(int param1_type, int param2_type, int param3_type);
 int command_live(char *command, char *argument);
 int command_ld(char *command, char *argument);
 int command_st(char *command, char *argument);

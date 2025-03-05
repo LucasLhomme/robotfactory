@@ -19,21 +19,26 @@ SRC =	./src/main.c \
         ./src/create_champions.c \
         ./src/error_handling.c \
         ./src/champion_parsing.c \
-        ./src/create_cor.c
+        ./src/create_cor.c \
+        ./src/write_coding_byte.c \
+        ./src/coding_byte.c \
+
 OBJ = $(SRC:.c=.o)
 LIBMY = libmy.a
 
 # Default target
 all: $(LIBMY) $(NAME)
 
-# Compilation of the main executable
+# Compilation de l'exécutable principal
 $(NAME): $(OBJ)
 	@echo "$(YELLOW)Building $@...$(NC)"
 	@OUTPUT=$$(gcc $(CFLAGS) -o $@ $^ $(LIBMY) 2>&1); \
 	ERRORS=$$(echo "$$OUTPUT" | grep -c "error:"); \
 	WARNINGS=$$(echo "$$OUTPUT" | grep -c "warning:"); \
+	echo "$$OUTPUT"; \
 	if [ $$ERRORS -eq 0 ]; then \
-		echo "$(GREEN)Build complete!$(NC)"; \
+		echo "$(GREEN)Build complete!\
+		$(MAGENTA)warnings :$$WARNINGS, $(RED)errors: $$ERRORS"; \
 	else \
 		echo "$(RED)Build failed with $$ERRORS errors\
 		$(MAGENTA) and $$WARNINGS warnings!$(NC)"; \

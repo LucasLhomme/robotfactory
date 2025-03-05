@@ -20,7 +20,7 @@ void flag_h(void)
 
 int main(int argc, char **argv)
 {
-    champion_t *champion = malloc(sizeof(champion_t) * 1);
+    champion_t *champion = NULL;
 
     if (argc <= 1)
         my_printf("Usage: ./asm file_name[.s] ....\n");
