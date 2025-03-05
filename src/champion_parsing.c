@@ -41,7 +41,7 @@ char *get_comment(FILE *file)
     return comment;
 }
 
-char *get_name(FILE *file)
+char *my_get_name(FILE *file)
 {
     size_t len = 0;
     ssize_t read;

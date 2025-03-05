@@ -44,7 +44,7 @@ int error_champion_handling(FILE *file, champion_t *champion);
 champion_t *create_champions(char *filename);
 void add_command(node_t **head, char *command, char *value, int id);
 char *get_comment(FILE *file);
-char *get_name(FILE *file);
+char *my_get_name(FILE *file);
 void get_command_list(FILE *file, champion_t *champion);
 int create_cor(champion_t *champ);
 int command_live(char *command, char *argument);
