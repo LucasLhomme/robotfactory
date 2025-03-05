@@ -22,10 +22,14 @@ int main(int argc, char **argv)
 {
     champion_t *champion = NULL;
 
-    if (argc <= 1)
+    if (argc <= 1) {
         my_printf("Usage: ./asm file_name[.s] ....\n");
-    else if (my_strcmp(argv[1], "-h") == 0)
+        return 84;
+    }
+    if (my_strcmp(argv[1], "-h") == 0) {
         flag_h();
+        return 0;
+    }
     if (error_handling(argc, argv) == 84)
         return 84;
     champion = create_champions(argv[1]);
