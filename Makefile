@@ -26,14 +26,16 @@ LIBMY = libmy.a
 # Default target
 all: $(LIBMY) $(NAME)
 
-# Compilation of the main executable
+# Compilation de l'exécutable principal
 $(NAME): $(OBJ)
 	@echo "$(YELLOW)Building $@...$(NC)"
 	@OUTPUT=$$(gcc $(CFLAGS) -o $@ $^ $(LIBMY) 2>&1); \
 	ERRORS=$$(echo "$$OUTPUT" | grep -c "error:"); \
 	WARNINGS=$$(echo "$$OUTPUT" | grep -c "warning:"); \
+	echo "$$OUTPUT"; \
 	if [ $$ERRORS -eq 0 ]; then \
-		echo "$(GREEN)Build complete!$(NC)"; \
+		echo "$(GREEN)Build complete!\
+		$(MAGENTA)warnings :$$WARNINGS, $(RED)errors: $$ERRORS"; \
 	else \
 		echo "$(RED)Build failed with $$ERRORS errors\
 		$(MAGENTA) and $$WARNINGS warnings!$(NC)"; \
