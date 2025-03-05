@@ -32,8 +32,10 @@ champion_t *parse_file(char *filename)
         return NULL;
     champion->name = my_get_name(file);
     champion->comment = get_comment(file);
-    if (!champion->name || !champion->comment)
+    if (!champion->name || !champion->comment) {
+        printf("wthhhhhhhhhhhhhh\n%s, %s", champion->name, champion->comment);
         return NULL;
+    }
     get_command_list(file, champion);
     free_champion(file, tab);
     return champion;
