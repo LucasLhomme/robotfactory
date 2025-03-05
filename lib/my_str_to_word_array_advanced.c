@@ -7,7 +7,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "lib.h"
 
 static int my_isalphanum_advanced(const char c, char *extra_chars)
 {
@@ -20,7 +19,6 @@ static int my_isalphanum_advanced(const char c, char *extra_chars)
         if (c == extra_chars[i])
             return 1;
     }
-    
     return 0;
 }
 
@@ -36,9 +34,8 @@ char *allocate_word(char *str, int start, int end)
 
     if (word == NULL)
         return NULL;
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < length; i++)
         word[i] = str[start + i];
-    }
     word[length] = '\0';
     return word;
 }
@@ -59,9 +56,8 @@ int count_word(char *str)
             word++;
             word_in = 1;
         }
-        if (!is_alnum) {
+        if (!is_alnum)
             word_in = 0;
-        }
     }
     return word;
 }
