@@ -15,7 +15,6 @@ int create_cor(champion_t *champ)
     if (champ == NULL || champ->name == NULL || champ->comment == NULL)
         return 84;
     my_strcpy(namefile, champ->name);
-    my_str_tolower(namefile);
     my_strcat(champ->filename, ".cor");
     new_file = fopen(champ->filename, "w+");
     if (new_file == NULL)
