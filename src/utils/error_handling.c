@@ -5,8 +5,8 @@
 ** error handling
 */
 
-#include "my.h"
-#include "lib.h"
+#include "../../include/my.h"
+#include "../../lib/include/lib.h"
 #include <string.h>
 
 int error_handling(int argc, char **argv)

@@ -41,11 +41,11 @@ champion_t *parse_file(char *filename)
 
 char *find_filename(char *filename)
 {
-    char **tab = my_str_to_word_array_advanced(filename, "._-");
+    char **tab = my_str_to_word_array_advanced(filename, "_-");
     int i = 0;
 
     for (; tab[i] != NULL; i++);
-    return tab[i - 1];
+    return tab[i - 2];
 }
 
 champion_t *create_champions(char *filename)
@@ -54,7 +54,7 @@ champion_t *create_champions(char *filename)
 
     champion = parse_file(filename);
     champion->filename = find_filename(filename);
-    my_printf("%s", filename);
+    my_printf("%s", champion->filename);
     if (champion == NULL)
         return NULL;
     rev_list(champion);

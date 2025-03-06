@@ -16,13 +16,13 @@ NC=\033[0m # No Color
 NAME = asm
 CFLAGS = -g -Wall -Wextra -W -Iinclude -Ilib/include -fdiagnostics-color=always
 SRC =	./src/main.c \
-        ./src/create_champions.c \
-        ./src/error_handling.c \
-        ./src/champion_parsing.c \
-        ./src/create_cor.c \
-        ./src/write_coding_byte.c \
-        ./src/coding_byte.c \
-		./src/rev_list.c
+        ./src/utils/error_handling.c \
+		./src/utils/rev_list.c \
+        ./src/champion/create_champions.c \
+        ./src/champion/champion_parsing.c \
+        ./src/cor/create_cor.c \
+        ./src/coding_bytes/write_coding_byte.c \
+        ./src/coding_bytes/coding_byte.c \
 
 OBJ = $(SRC:.c=.o)
 LIBMY = libmy.a
