@@ -39,7 +39,7 @@ int error_name_handling(char **tab)
 
     if (tab[2])
         return 84;
-    for (;tab[1][i] != '\0'; i++);
+    for (; tab[1][i] != '\0'; i++);
     if (tab[1][i - 1] != '"' || tab[1][0] != '"')
         return 84;
     return 0;

@@ -7,6 +7,16 @@
 
 #include "my.h"
 #include "lib.h"
+#include <stdio.h>
+
+/*
+
+int error_name_handling(char **tab)
+{
+    (void)tab;
+    return 0;
+}
+ */
 
 void add_command(node_t **head, char *command, char *value, int id)
 {
@@ -56,8 +66,6 @@ char *my_get_name(FILE *file)
     if (!tab[0])
         return NULL;
     if (my_strcmp(tab[0], ".name") != 0)
-        return NULL;
-    if (error_name_handling(tab) == 84)
         return NULL;
     name = extract_str(line, '"');
     return name;
