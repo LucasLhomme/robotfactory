@@ -20,6 +20,21 @@ test_execution() {
   fi
 }
 
+# Fonction pour comparer les fichiers .cor
+compare_cor_files() {
+  test_id="$1"
+  test_name="$2"
+  actual_file="$3"
+  expected_file="$4"
+  if cmp -s "$actual_file" "$expected_file"; then
+    passed_count=$((passed_count + 1))
+    printf "\033[32mTest [%s] %s passed\033[0m\n" "$test_id" "$test_name"
+  else
+    error_count=$((error_count + 1))
+    printf "\033[31mTest [%s] %s failed: Files differ\033[0m\n" "$test_id" "$test_name"
+  fi
+}
+
 # Initialisation des compteurs
 error_count=0
 passed_count=0
@@ -61,10 +76,14 @@ test_execution "16" "Label invalid instruction" "./asm label_invalid_instruction
 test_execution "17" "sti instruction" "./asm sti_instruction.s" 0
 test_execution "18" "Multiple instructions" "./asm multiple_instructions.s" 0
 
+# Test de comparaison avec abel_real.cor
+test_execution "19" "Create abel.cor" "./asm ./tests/abel.s" 0
+compare_cor_files "20" "Compare with abel_real.cor" "./abel.cor" "tests/abel_real.cor"
+
 # Affichage du résumé des tests
 echo "Tests passed: $passed_count"
 echo "Wrong value: $error_count"
 
 # Nettoyage
 make clean
-rm -f valid.s invalid_name.s invalid_comment.s invalid_instruction.s valid_label.s valid_instruction_params.s invalid_instruction_params.s valid_multiple_params.s invalid_multiple_params.s multiple_lines.s empty_lines.s comment_line.s label_invalid_instruction.s sti_instruction.s multiple_instructions.s
+rm -f valid.s invalid_name.s invalid_comment.s invalid_instruction.s valid_label.s valid_instruction_params.s invalid_instruction_params.s valid_multiple_params.s invalid_multiple_params.s multiple_lines.s empty_lines.s comment_line.s label_invalid_instruction.s sti_instruction.s multiple_instructions.s valid.cor
