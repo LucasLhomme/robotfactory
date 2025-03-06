@@ -54,6 +54,7 @@ champion_t *create_champions(char *filename)
 
     champion = parse_file(filename);
     champion->filename = find_filename(filename);
+    my_printf("%s", filename);
     if (champion == NULL)
         return NULL;
     rev_list(champion);
