@@ -39,12 +39,22 @@ champion_t *parse_file(char *filename)
     return champion;
 }
 
+char *find_filename(char *filename)
+{
+    char **tab = my_str_to_word_array_advanced(filename, "._-");
+    int i = 0;
+
+    for (; tab[i] != NULL; i++);
+    printf("%s\n", tab[i - 1]);
+    return tab[i - 1];
+}
+
 champion_t *create_champions(char *filename)
 {
     champion_t *champion = malloc(sizeof(champion_t) * 1);
 
     champion = parse_file(filename);
-    champion->filename = filename;
+    champion->filename = find_filename(filename);
     if (champion == NULL)
         return NULL;
     rev_list(champion);

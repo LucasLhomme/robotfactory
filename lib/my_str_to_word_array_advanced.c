@@ -12,8 +12,7 @@ static int my_isalphanum_advanced(const char c, char *extra_chars)
 {
     if ((c >= 'a' && c <= 'z') ||
         (c >= 'A' && c <= 'Z') ||
-        (c >= '0' && c <= '9') ||
-        c == '/' || c == '-')
+        (c >= '0' && c <= '9'))
         return 1;
     for (int i = 0; extra_chars[i] != '\0'; i++) {
         if (c == extra_chars[i])
