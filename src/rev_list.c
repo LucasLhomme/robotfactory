@@ -19,4 +19,5 @@ void rev_list(champion_t *champion)
         previous = actual;
         actual = next;
     }
+    champion->commandsList = previous;
 }

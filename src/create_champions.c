@@ -47,5 +47,7 @@ champion_t *create_champions(char *filename)
     champion->filename = filename;
     if (champion == NULL)
         return NULL;
+    printf("COucou");
+    rev_list(champion);
     return champion;
 }
