@@ -45,7 +45,6 @@ char *find_filename(char *filename)
     int i = 0;
 
     for (; tab[i] != NULL; i++);
-    printf("%s\n", tab[i - 1]);
     return tab[i - 1];
 }
 
