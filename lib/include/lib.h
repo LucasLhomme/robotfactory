@@ -53,4 +53,5 @@ char *my_strtok(char *str, const char *delim);
 int my_strmajcmp(char *str1, char *str2);
 char **my_str_to_word_array_advanced(char *str, char *extra_chars);
 int my_str_tolower(char *str);
+void my_free_word_array(char **tab);
 #endif /*lib.h*/

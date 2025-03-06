@@ -43,19 +43,33 @@ char *find_filename(char *filename)
 {
     char **tab = my_str_to_word_array_advanced(filename, "_-");
     int i = 0;
+    char *result;
 
+    if (!tab || !filename || filename[0] == '\0')
+        return NULL;
     for (; tab[i] != NULL; i++);
-    return tab[i - 2];
+    if (i < 2) {
+        my_free_word_array(tab);
+        return NULL;
+    }
+    result = my_strdup(tab[i - 2]);
+    my_free_word_array(tab);
+    return result;
 }
 
 champion_t *create_champions(char *filename)
 {
     champion_t *champion = malloc(sizeof(champion_t) * 1);
+    char *name = NULL;
 
     champion = parse_file(filename);
-    champion->filename = find_filename(filename);
-    my_printf("%s", champion->filename);
     if (champion == NULL)
+        return NULL;
+    name = find_filename(filename);
+    if (!name)
+        return NULL;
+    champion->filename = my_strdup(name);
+    if (!champion->filename)
         return NULL;
     rev_list(champion);
     return champion;
