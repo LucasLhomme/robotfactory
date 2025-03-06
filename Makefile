@@ -22,6 +22,7 @@ SRC =	./src/main.c \
         ./src/create_cor.c \
         ./src/write_coding_byte.c \
         ./src/coding_byte.c \
+		./src/rev_list.c
 
 OBJ = $(SRC:.c=.o)
 LIBMY = libmy.a

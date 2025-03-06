@@ -19,7 +19,7 @@ void initialize_champion(champion_t *champion)
 {
     champion->name = NULL;
     champion->comment = NULL;
-    champion->next = NULL;
+    champion->commandsList = NULL;
 }
 
 champion_t *parse_file(char *filename)
@@ -44,6 +44,7 @@ champion_t *create_champions(char *filename)
     champion_t *champion = malloc(sizeof(champion_t) * 1);
 
     champion = parse_file(filename);
+    champion->filename = filename;
     if (champion == NULL)
         return NULL;
     return champion;

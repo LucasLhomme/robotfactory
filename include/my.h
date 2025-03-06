@@ -26,7 +26,8 @@ typedef struct champion_s {
     char *name;
     char *comment;
     uint32_t prog_size;
-    struct node *next;
+    node_t *commandsList;
+    char *filename;
 } champion_t;
 
 /*Function*/
@@ -49,6 +50,7 @@ int write_parameters(FILE *new_file, char *param1,
     char *param2, char *param3);
 uint8_t create_coding_byte(int param1_type, int param2_type, int param3_type);
 uint32_t my_revbyte_32(uint32_t value);
+void rev_list(champion_t *champion);
 /*Parameters*/
 int command_live(char *command, char *argument);
 int command_ld(char *command, char *argument);

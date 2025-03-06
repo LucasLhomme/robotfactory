@@ -9,15 +9,6 @@
 #include "lib.h"
 #include <stdio.h>
 
-/*
-
-int error_name_handling(char **tab)
-{
-    (void)tab;
-    return 0;
-}
- */
-
 void add_command(node_t **head, char *command, char *value, int id)
 {
     node_t *new_node = malloc(sizeof(node_t));
@@ -86,7 +77,7 @@ void get_command_list(FILE *file, champion_t *champion)
         if (line[0] != '.' && my_strlen(line) > 1) {
             cmd = my_strtok(line, " ");
             val = my_strtok(NULL, "\n");
-            add_command(&champion->next, cmd, val, id++);
+            add_command(&champion->commandsList, cmd, val, id++);
         }
     }
 }
