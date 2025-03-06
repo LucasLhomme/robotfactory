@@ -39,9 +39,9 @@ int find_command(champion_t *champion, node_t *cmd)
 
 int command_checker(champion_t *champion)
 {
-    node_t *cmd = champion->next;
+    node_t *cmd = champion->commandsList;
 
-    for (node_t *cmd = champion->next; cmd; cmd = cmd->next) {
+    for (node_t *cmd = champion->commandsList; cmd; cmd = cmd->next) {
         if (find_command(champion, cmd) == 84)
             return 84;
     }
