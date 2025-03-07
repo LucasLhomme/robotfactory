@@ -51,22 +51,6 @@ int write_parameters(FILE *new_file, char *param1,
 uint8_t create_coding_byte(int param1_type, int param2_type, int param3_type);
 uint32_t my_revbyte_32(uint32_t value);
 void rev_list(champion_t *champion);
-/*Parameters*/
-int command_live(char *command, char *argument);
-int command_ld(char *command, char *argument);
-int command_st(char *command, char *argument);
-int command_add(char *command, char *argument);
-int command_sub(char *command, char *argument);
-int command_and(char *command, char *argument);
-int command_or(char *command, char *argument);
-int command_xor(char *command, char *argument);
-int command_zjmp(char *command, char *argument);
-int command_ldi(char *command, char *argument);
-int command_sti(char *command, char *argument);
-int command_fork(char *command, char *argument);
-int command_lld(char *command, char *argument);
-int command_lldi(char *command, char *argument);
-int command_lfork(char *command, char *argument);
-int command_aff(char *command, char *argument);
 int error_name_handling(char **tab);
+int command_checker(champion_t *champion);
 #endif /* !MY_H_ */

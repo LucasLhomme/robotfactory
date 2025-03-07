@@ -62,6 +62,35 @@ char *my_get_name(FILE *file)
     return name;
 }
 
+static char *choose_command(char **tab)
+{
+    for (int i = 0; tab[0][i] != '\0'; i++) {
+        if (tab[0][i] == ':' && tab[0][i + 1] == '\0')
+            return tab[1];
+    }
+    return tab[0];
+}
+
+char *create_value(char **tab)
+{
+    int command = 0;
+    char *value = NULL;
+
+    for (int i = 0; tab[0][i] != '\0'; i++) {
+        if (tab[0][i] == ':' && tab[0][i + 1] == '\0')
+            command = 1;
+    }
+    if (tab[command + 1]) {
+        value = my_strdup(tab[command + 1]);
+        command++;
+    }
+    for (int i = command + 1; tab[i] != NULL; i++) {
+        my_strcat(value, " ");
+        my_strcat(value, tab[i]);
+    }
+    return value;
+}
+
 void get_command_list(FILE *file, champion_t *champion)
 {
     size_t len = 0;
@@ -70,13 +99,15 @@ void get_command_list(FILE *file, champion_t *champion)
     static int id = 0;
     char *cmd = NULL;
     char *val = NULL;
+    char **tab = NULL;
 
     if (!champion || !file)
         return;
     for (; read != -1; read = getline(&line, &len, file)) {
         if (line[0] != '.' && my_strlen(line) > 1) {
-            cmd = my_strtok(line, " ");
-            val = my_strtok(NULL, "\n");
+            tab = my_str_to_word_array_advanced(line, "%:");
+            cmd = my_strdup(choose_command(tab));
+            val = my_strdup(create_value(tab));
             add_command(&champion->commandsList, cmd, val, id++);
         }
     }
