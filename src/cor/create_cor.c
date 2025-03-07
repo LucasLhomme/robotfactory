@@ -7,17 +7,16 @@
 #include "my.h"
 #include "lib.h"
 
-int create_cor(champion_t *champ)
-{
+int create_cor(champion_t *champ) {
     char namefile[256];
     FILE *new_file = NULL;
 
-    if (champ == NULL || champ->name == NULL || champ->comment == NULL)
+    if (!champ || !champ->name || !champ->comment)
         return 84;
     my_strcpy(namefile, champ->name);
-    my_strcat(champ->filename, ".cor");
-    new_file = fopen(champ->filename, "w+");
-    if (new_file == NULL)
+    strncat(namefile, ".cor", sizeof(namefile) - strlen(namefile) - 1);
+    new_file = fopen(namefile, "w+");
+    if (!new_file)
         return 84;
     if (write_header(new_file, champ) == 84) {
         fclose(new_file);
@@ -26,3 +25,5 @@ int create_cor(champion_t *champ)
     fclose(new_file);
     return 0;
 }
+
+

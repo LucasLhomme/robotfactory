@@ -71,10 +71,10 @@ static char *choose_command(char **tab)
     return tab[0];
 }
 
-char *create_value(char **tab)
-{
+char *create_value(char **tab) {
     int command = 0;
     char *value = NULL;
+    size_t length = 0;
 
     for (int i = 0; tab[0][i] != '\0'; i++) {
         if (tab[0][i] == ':' && tab[0][i + 1] == '\0')
@@ -83,13 +83,22 @@ char *create_value(char **tab)
     if (tab[command + 1]) {
         value = my_strdup(tab[command + 1]);
         command++;
+    } else {
+        value = malloc(1);
+        value[0] = '\0';
     }
     for (int i = command + 1; tab[i] != NULL; i++) {
-        my_strcat(value, " ");
-        my_strcat(value, tab[i]);
+        length = my_strlen(value) + my_strlen(tab[i]) + 2;
+        value = realloc(value, length);
+        if (!value)
+            return NULL;
+        strcat(value, " ");
+        strcat(value, tab[i]);
     }
     return value;
 }
+
+
 
 void get_command_list(FILE *file, champion_t *champion)
 {
@@ -109,6 +118,7 @@ void get_command_list(FILE *file, champion_t *champion)
             cmd = my_strdup(choose_command(tab));
             val = my_strdup(create_value(tab));
             add_command(&champion->commandsList, cmd, val, id++);
+            my_free_word_array(tab);
         }
     }
 }

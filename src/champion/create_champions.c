@@ -59,18 +59,28 @@ char *find_filename(char *filename)
 
 champion_t *create_champions(char *filename)
 {
-    champion_t *champion = malloc(sizeof(champion_t) * 1);
+    champion_t *champion = malloc(sizeof(champion_t));
     char *name = NULL;
 
+    if (!champion)
+        return NULL;
     champion = parse_file(filename);
-    if (champion == NULL)
+    if (!champion) {
+        free(champion);
         return NULL;
+    }
     name = find_filename(filename);
-    if (!name)
+    if (!name) {
+        free(champion);
         return NULL;
+    }
     champion->filename = my_strdup(name);
-    if (!champion->filename)
+    free(name);
+    if (!champion->filename) {
+        free(champion);
         return NULL;
-    rev_list(champion);
+    }
     return champion;
 }
+
+
