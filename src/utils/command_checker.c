@@ -14,7 +14,6 @@ static int count_number_array(char **tab)
     int i = 0;
 
     for (; tab[i] != NULL; i++);
-    printf("%d\n", i);
     return i;
 }
 
@@ -88,11 +87,9 @@ int command_error_handling(node_t *cmd, int index)
 {
     char **tab = my_str_to_word_array_advanced(cmd->value, "%:");
 
-    my_show_word_in_array(tab);
     if (op_tab[index].nbr_args != count_number_array(tab))
         return 84;
     for (int i = 0; tab[i] != NULL; i++) {
-        printf("%s\n", tab[i]);
         if (check_type(tab[i], op_tab[index].type[i]) == 84)
             return 84;
     }
