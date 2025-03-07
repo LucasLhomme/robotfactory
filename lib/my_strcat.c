@@ -9,13 +9,6 @@
 
 char *my_strcat(char *dest, const char *src)
 {
-    size_t dest_len = my_strlen(dest);
-    size_t src_len = my_strlen(src);
-    size_t new_size = dest_len + src_len + 1;
-
-    dest = realloc(dest, new_size);
-    if (!dest)
-        return NULL;
-    my_strcat(dest, src);
+    my_strcpy(dest + my_strlen(dest), src);
     return dest;
 }
