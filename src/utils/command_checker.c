@@ -14,6 +14,7 @@ static int count_number_array(char **tab)
     int i = 0;
 
     for (;tab[i] != NULL; i++);
+    printf("%d\n", i);
     return i;
 }
 
@@ -49,6 +50,17 @@ int extract_number_str(char *str)
     return 0;
 }
 
+int is_label(char *args)
+{
+    int actual_type = 0;
+
+    if (args[1] == ':')
+        actual_type = T_LAB - 1;
+    else
+        actual_type = T_DIR;
+    return actual_type;
+}
+
 int check_type(char *args, int expected_type)
 {
     int actual_type = 0;
@@ -60,7 +72,7 @@ int check_type(char *args, int expected_type)
         break;
     case '%':
         if (args[1] == ':') {
-            actual_type = T_LAB;
+            actual_type = T_LAB - 1;
             break;
         } else {
             actual_type = T_DIR;
@@ -71,6 +83,7 @@ int check_type(char *args, int expected_type)
             actual_type = T_IND;
         break;
     }
+    printf("actual :%d  want: %d\n", actual_type, expected_type);
     if (!(expected_type & actual_type))
         return 84;
     return 0;
@@ -80,18 +93,24 @@ int command_error_handling(node_t *cmd, int index)
 {
     char **tab = my_str_to_word_array_advanced(cmd->value, "%:");
 
-    if (op_tab[index].nbr_args != count_number_array(tab))
+    my_show_word_in_array(tab);
+    if (op_tab[index].nbr_args != count_number_array(tab)) {
+        printf("nbr_args : % ||\n", op_tab[index].nbr_args);
         return 84;
-    for (int i = 0; tab[i] != NULL; i++)
+    }
+    for (int i = 0; tab[i] != NULL; i++)  {
+        printf("%s\n", tab[i]);
         if (check_type(tab[i], op_tab[index].type[i]) == 84)
             return 84;
+    }
     return 0;
 }
 
 int find_command(node_t *cmd)
 {
     for (int i = 0; op_tab[i].mnemonique != NULL; i++) {
-        if (op_tab[i].mnemonique == cmd->command) {
+        if (my_strcmp(op_tab[i].mnemonique, cmd->command) == 0) {
+            printf("trouvé\n");
             return command_error_handling(cmd, i);
         }
     }
