@@ -8,6 +8,7 @@
 #include "my.h"
 #include "lib.h"
 #include "op.h"
+#include "const.h"
 
 static int count_number_array(char **tab)
 {
