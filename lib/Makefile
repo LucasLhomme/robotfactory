@@ -52,7 +52,10 @@ LIB =	./my_compute_power_rec.c\
 	./my_strtok.c\
 	./my_str_to_word_array_advanced.c\
 	./my_str_tolower.c\
-	./my_free_word_array.c
+	./my_free_word_array.c\
+	./my_atoi.c\
+	./my_isalpha.c\
+	./my_isdigit.c
 
 OBJ_LIB  	=	 $(LIB:.c=.o)
 
