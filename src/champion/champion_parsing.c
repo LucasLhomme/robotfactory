@@ -54,12 +54,16 @@ static char *choose_command(char **tab)
 char *realoc_value(char **tab, int command, char *value)
 {
     size_t length = 0;
+    char *new_value = NULL;
 
     for (int i = command + 1; tab[i] != NULL; i++) {
         length = my_strlen(value) + my_strlen(tab[i]) + 2;
-        value = realloc(value, length);
-        if (!value)
+        new_value = realloc(value, length);
+        if (!new_value) {
+            free(value);
             return NULL;
+        }
+        value = new_value;
         my_strcat(value, " ");
         my_strcat(value, tab[i]);
     }
@@ -80,10 +84,10 @@ char *create_value(char **tab)
         command++;
     } else {
         value = malloc(1);
-        value[0] = '\0';
+        if (value)
+            value[0] = '\0';
     }
-    realoc_value(tab, command, value);
-    return value;
+    return realoc_value(tab, command, value);
 }
 
 void get_command_list(FILE *file, champion_t *champion)
