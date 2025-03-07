@@ -14,7 +14,9 @@ char *my_strncat(char *dest, const char *src, size_t n)
     while (*pos)
         pos++;
     while (*src && n > 0) {
-        *pos++ = *src++;
+        *pos = *src;
+        pos++;
+        src++;
         n--;
     }
     *pos = '\0';

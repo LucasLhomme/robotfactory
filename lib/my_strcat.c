@@ -13,8 +13,11 @@ char *my_strcat(char *dest, const char *src)
 
     while (*pos)
         pos++;
-    while (*src)
-        *pos++ = *src++;
+    while (*src) {
+        *pos = *src;
+        pos++;
+        src++;
+    }
     *pos = '\0';
     return dest;
 }
