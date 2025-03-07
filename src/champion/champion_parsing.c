@@ -62,7 +62,7 @@ char *my_get_name(FILE *file)
     return name;
 }
 
-char *choose_command(char **tab)
+static char *choose_command(char **tab)
 {
     for (int i = 0; tab[0][i] != '\0'; i++) {
         if (tab[0][i] == ':' && tab[0][i + 1] == '\0')

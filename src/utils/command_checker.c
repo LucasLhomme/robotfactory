@@ -13,14 +13,14 @@ static int count_number_array(char **tab)
 {
     int i = 0;
 
-    for (;tab[i] != NULL; i++);
+    for (; tab[i] != NULL; i++);
     printf("%d\n", i);
     return i;
 }
 
 static char *find_number(char *str)
 {
-    for (;*str && my_isdigit(*str) != 0; str++);
+    for (; *str && my_isdigit(*str) != 0; str++);
     return str;
 }
 
@@ -37,7 +37,7 @@ int my_isnumber(const char *str)
     return 1;
 }
 
-int extract_number_str(char *str)
+static int extract_number_str(char *str)
 {
     while (*str) {
         if (my_isalpha(*str) == 0) {
@@ -50,7 +50,7 @@ int extract_number_str(char *str)
     return 0;
 }
 
-int is_label(char *args)
+static int is_label(char *args)
 {
     int actual_type = 0;
 
@@ -67,38 +67,31 @@ int check_type(char *args, int expected_type)
 
     switch (args[0]) {
     case 'r':
-        if (extract_number_str(args) >= 1 && extract_number_str(args) <= REG_NUMBER)
+        if (extract_number_str(args) >= 1 &&
+            extract_number_str(args) <= REG_NUMBER)
             actual_type = T_REG;
         break;
     case '%':
-        if (args[1] == ':') {
-            actual_type = T_LAB - 1;
-            break;
-        } else {
-            actual_type = T_DIR;
-            break;
-        }
+        actual_type = is_label(args);
+        break;
     default:
         if (my_isnumber(args))
             actual_type = T_IND;
         break;
     }
-    printf("actual :%d  want: %d\n", actual_type, expected_type);
     if (!(expected_type & actual_type))
         return 84;
     return 0;
-} 
+}
 
 int command_error_handling(node_t *cmd, int index)
 {
     char **tab = my_str_to_word_array_advanced(cmd->value, "%:");
 
     my_show_word_in_array(tab);
-    if (op_tab[index].nbr_args != count_number_array(tab)) {
-        printf("nbr_args : % ||\n", op_tab[index].nbr_args);
+    if (op_tab[index].nbr_args != count_number_array(tab))
         return 84;
-    }
-    for (int i = 0; tab[i] != NULL; i++)  {
+    for (int i = 0; tab[i] != NULL; i++) {
         printf("%s\n", tab[i]);
         if (check_type(tab[i], op_tab[index].type[i]) == 84)
             return 84;
@@ -109,10 +102,8 @@ int command_error_handling(node_t *cmd, int index)
 int find_command(node_t *cmd)
 {
     for (int i = 0; op_tab[i].mnemonique != NULL; i++) {
-        if (my_strcmp(op_tab[i].mnemonique, cmd->command) == 0) {
-            printf("trouvé\n");
+        if (my_strcmp(op_tab[i].mnemonique, cmd->command) == 0)
             return command_error_handling(cmd, i);
-        }
     }
     return 84;
 }
