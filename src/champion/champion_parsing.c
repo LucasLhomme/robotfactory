@@ -42,26 +42,6 @@ char *get_comment(FILE *file)
     return comment;
 }
 
-char *my_get_name(FILE *file)
-{
-    size_t len = 0;
-    ssize_t read;
-    char *line = NULL;
-    char **tab = NULL;
-    char *name = NULL;
-
-    read = getline(&line, &len, file);
-    if (read == -1)
-        return NULL;
-    tab = my_str_to_word_array_advanced(line, ".\"");
-    if (!tab[0])
-        return NULL;
-    if (my_strcmp(tab[0], ".name") != 0)
-        return NULL;
-    name = extract_str(line, '"');
-    return name;
-}
-
 static char *choose_command(char **tab)
 {
     for (int i = 0; tab[0][i] != '\0'; i++) {
@@ -71,10 +51,25 @@ static char *choose_command(char **tab)
     return tab[0];
 }
 
-char *create_value(char **tab) {
+char *realoc_value(char **tab, int command, char *value)
+{
+    size_t length = 0;
+
+    for (int i = command + 1; tab[i] != NULL; i++) {
+        length = my_strlen(value) + my_strlen(tab[i]) + 2;
+        value = realloc(value, length);
+        if (!value)
+            return NULL;
+        my_strcat(value, " ");
+        my_strcat(value, tab[i]);
+    }
+    return value;
+}
+
+char *create_value(char **tab)
+{
     int command = 0;
     char *value = NULL;
-    size_t length = 0;
 
     for (int i = 0; tab[0][i] != '\0'; i++) {
         if (tab[0][i] == ':' && tab[0][i + 1] == '\0')
@@ -87,18 +82,9 @@ char *create_value(char **tab) {
         value = malloc(1);
         value[0] = '\0';
     }
-    for (int i = command + 1; tab[i] != NULL; i++) {
-        length = my_strlen(value) + my_strlen(tab[i]) + 2;
-        value = realloc(value, length);
-        if (!value)
-            return NULL;
-        strcat(value, " ");
-        strcat(value, tab[i]);
-    }
+    realoc_value(tab, command, value);
     return value;
 }
-
-
 
 void get_command_list(FILE *file, champion_t *champion)
 {

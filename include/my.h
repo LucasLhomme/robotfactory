@@ -50,6 +50,7 @@ int write_parameters(FILE *new_file, char *param1,
     char *param2, char *param3);
 uint8_t create_coding_byte(int param1_type, int param2_type, int param3_type);
 uint32_t my_revbyte_32(uint32_t value);
+char *my_get_name(FILE *file);
 void rev_list(champion_t *champion);
 int error_name_handling(char **tab);
 int command_checker(champion_t *champion);

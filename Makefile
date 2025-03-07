@@ -20,6 +20,7 @@ SRC =	./src/main.c \
 		./src/utils/rev_list.c \
         ./src/champion/create_champions.c \
         ./src/champion/champion_parsing.c \
+        ./src/champion/get_name.c \
         ./src/cor/create_cor.c \
         ./src/coding_bytes/write_coding_byte.c \
         ./src/coding_bytes/coding_byte.c \

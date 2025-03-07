@@ -55,11 +55,12 @@ LIB =	./my_compute_power_rec.c\
 	./my_free_word_array.c\
 	./my_atoi.c\
 	./my_isalpha.c\
+	./my_strncat.c\
 	./my_isdigit.c
 
 OBJ_LIB  	=	 $(LIB:.c=.o)
 
-CFLAGS += -Wall -Werror -Wextra -W -Iinclude
+CFLAGS += -g -Wall -Werror -Wextra -W -Iinclude
 
 all: 	$(NAME)
 

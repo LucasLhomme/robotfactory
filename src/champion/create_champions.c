@@ -59,16 +59,11 @@ char *find_filename(char *filename)
 
 champion_t *create_champions(char *filename)
 {
-    champion_t *champion = malloc(sizeof(champion_t));
-    char *name = NULL;
+    champion_t *champion = parse_file(filename);
+    char *name;
 
     if (!champion)
         return NULL;
-    champion = parse_file(filename);
-    if (!champion) {
-        free(champion);
-        return NULL;
-    }
     name = find_filename(filename);
     if (!name) {
         free(champion);
@@ -82,5 +77,3 @@ champion_t *create_champions(char *filename)
     }
     return champion;
 }
-
-

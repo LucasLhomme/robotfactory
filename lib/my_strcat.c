@@ -16,7 +16,6 @@ char *my_strcat(char *dest, const char *src)
     dest = realloc(dest, new_size);
     if (!dest)
         return NULL;
-    strcat(dest, src);
+    my_strcat(dest, src);
     return dest;
 }
-
