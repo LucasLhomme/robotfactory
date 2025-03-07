@@ -5,10 +5,16 @@
 ** a function that concatenates two strings
 */
 
-#include "lib.h"
+#include <stdio.h>
 
 char *my_strcat(char *dest, const char *src)
 {
-    my_strcpy(dest + my_strlen(dest), src);
+    char *pos = dest;
+
+    while (*pos)
+        pos++;
+    while (*src)
+        *pos++ = *src++;
+    *pos = '\0';
     return dest;
 }

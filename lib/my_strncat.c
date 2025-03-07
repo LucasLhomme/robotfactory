@@ -7,15 +7,16 @@
 
 #include "lib.h"
 
-char *my_strncat(char *dest, char const *src, int n)
+char *my_strncat(char *dest, const char *src, size_t n)
 {
-    int lendest = my_strlen(dest);
-    int ogn = n;
+    char *pos = dest;
 
-    for (int i = 0; n != 0; i++) {
-        dest[i + lendest] = src[i];
-        n = n - 1;
+    while (*pos)
+        pos++;
+    while (*src && n > 0) {
+        *pos++ = *src++;
+        n--;
     }
-    dest[lendest + ogn + 1] = '\0';
-    return (dest);
+    *pos = '\0';
+    return dest;
 }
