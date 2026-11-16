@@ -4,7 +4,7 @@
 [![Build: Make](https://img.shields.io/badge/Build-Makefile-orange.svg)](Makefile)
 [![Module: B-CPE-200](https://img.shields.io/badge/Epitech-B--CPE--200-blue.svg)](https://www.epitech.eu/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Academic Year: 2024-2025](https://img.shields.io/badge/Academic%20Year-2024--2025%20(Tek1)-blueviolet.svg)](#)
+[![Epitech: Tek1](https://img.shields.io/badge/Epitech-Tek1-005696.svg)](https://www.epitech.eu/)
 
 > **Robot Factory is the assembler companion tool for Corewar.** It compiles human-readable assembly source files (`.s`) into executable machine bytecode binaries (`.cor`).
 
